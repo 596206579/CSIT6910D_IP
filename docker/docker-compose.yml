@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  redis:
+    image: redis:5.0
+    ports:
+      - "6379:6379"
+    restart: on-failure
+
+  zookeeper:
+    restart: on-failure
+    image: yfgu9nc3.mirror.aliyuncs.com/confluentinc/cp-zookeeper:latest
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    restart: on-failure
+    image: yfgu9nc3.mirror.aliyuncs.com/confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1

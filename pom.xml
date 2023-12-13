@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>lbs-common</module>
+        <module>lbs-shared</module>
+        <module>lbs-admin</module>
+        <module>lbs-service</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.10.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.xuehongbin</groupId>
+    <artifactId>kafka-lbs</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>kafka-lbs</name>
+    <properties>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <java.version>1.8</java.version>
+
+        <hutool.version>5.6.5</hutool.version>
+        <mybatis-plus.version>3.4.2</mybatis-plus.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <knife4j.version>2.0.8</knife4j.version>
+        <druid.version>1.2.1</druid.version>
+        <template-common.version>1.0.0-SNAPSHOT</template-common.version>
+        <template-shared.version>1.0.0-SNAPSHOT</template-shared.version>
+        <template-service.version>1.0.0-SNAPSHOT</template-service.version>
+        <template-sdk.version>1.0.0-SNAPSHOT</template-sdk.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.xuehongbin</groupId>
+                <artifactId>lbs-common</artifactId>
+                <version>${template-common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xuehongbin</groupId>
+                <artifactId>lbs-shared</artifactId>
+                <version>${template-shared.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xuehongbin</groupId>
+                <artifactId>lbs-sdk</artifactId>
+                <version>${template-sdk.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xuehongbin</groupId>
+                <artifactId>lbs-service</artifactId>
+                <version>${template-service.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers</artifactId>
+                <version>1.16.0</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- https://www.hutool.cn/docs/#/-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!--https://baomidou.com/guide/#%E7%89%B9%E6%80%A7-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <!--https://doc.xiaominfo.com/knife4j/documentation/description.html-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!--jwt-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <scope>provided</scope>
+                <version>${lombok.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
