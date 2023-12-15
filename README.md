@@ -15,5 +15,4 @@ For your convenience in understanding and running the project, I will introduce 
 1. Please ensure that the Kafka related environment is configured correctly first.
 2. Please run the SQL file first to generate the database.
 3. After starting the project, it is necessary to run the data flow script "DataStream. class" to simulate the generation of user location data.
-![image](https://github.com/596206579/CSIT6910D_IP/assets/42928202/2160ebb9-9da4-4399-a3d9-8b81929ad358)
 
