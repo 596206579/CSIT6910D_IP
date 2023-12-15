@@ -1,4 +1,4 @@
-# CSIT6910A_IP
+# CSIT6910D_IP
 
 ## Project Structure Description
 For your convenience in understanding and running the project, I will introduce to you the general functions of each module (folder) mentioned above:
